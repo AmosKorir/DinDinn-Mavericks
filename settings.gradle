@@ -1,0 +1,5 @@
+include ':data'
+include ':domain'
+include ':viewmodels'
+include ':app'
+rootProject.name = "DInDinn"
