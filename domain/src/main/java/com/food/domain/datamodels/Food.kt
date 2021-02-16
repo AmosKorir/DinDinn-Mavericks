@@ -1,3 +1,3 @@
-package com.food.domain
+package com.food.domain.datamodels
 
 data class Food(val name: String, val price: Double)
