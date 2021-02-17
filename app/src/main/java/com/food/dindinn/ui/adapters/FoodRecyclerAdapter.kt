@@ -1,6 +1,8 @@
 package com.food.dindinn.ui.adapters
 
 import android.content.Context
+import android.graphics.drawable.TransitionDrawable
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -61,7 +63,24 @@ class FoodRecyclerAdapter(
         foodDescriptionTv.text = foodMeal.description
         foodPrice.setOnClickListener {
             foodSelectionInterface.addToCart(foodMeal)
+            rippleEffect(foodPrice, foodMeal)
         }
+    }
+
+    private fun rippleEffect(view: TextView, food: Food) {
+        view.text = context.getString(R.string.added)
+        val transition = view.background as TransitionDrawable
+        transition.startTransition(1000)
+        transition.reverseTransition(2000)
+        val countDownTimer = object : CountDownTimer(1000, 1000) {
+            override fun onTick(p0: Long) {
+            }
+            override fun onFinish() {
+                view.text = context.getString(R.string.pricing, food.price.toString())
+
+            }
+        }
+        countDownTimer.start()
     }
 
     interface FoodSelectionInterface {
