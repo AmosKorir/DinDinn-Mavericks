@@ -12,9 +12,19 @@ class FoodViewModel(
 
     private val foodRepository = DataSource.repository
 
+    init {
+        getFood()
+        getPromotion()
+    }
     fun getFood() {
         foodRepository.getFood().execute {
             copy(food = it)
+        }
+    }
+
+    fun getPromotion(){
+        foodRepository.getPromotion().execute {
+            copy(promotion = it)
         }
     }
 

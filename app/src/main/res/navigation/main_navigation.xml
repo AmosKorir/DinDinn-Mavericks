@@ -11,7 +11,9 @@
         android:label="HomeFoodFragment" >
         <action
             android:id="@+id/action_homeFoodFragment_to_cartFragment"
-            app:destination="@id/cartFragment" />
+            app:destination="@id/cartFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/cartFragment"

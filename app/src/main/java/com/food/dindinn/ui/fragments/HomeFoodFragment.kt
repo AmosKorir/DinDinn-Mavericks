@@ -12,6 +12,7 @@ import com.airbnb.mvrx.*
 import com.food.dindinn.R
 import com.food.dindinn.ui.adapters.FoodRecyclerAdapter
 import com.food.domain.datamodels.Food
+import com.food.domain.datamodels.Promotion
 import com.food.viewmodels.FoodViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.synnapps.carouselview.CarouselView
@@ -26,6 +27,7 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
     private lateinit var floatActionButton: FloatingActionButton
     private lateinit var cartCountTv: TextView
     private lateinit var carouselView: CarouselView
+    private lateinit var adapter: FoodRecyclerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -41,7 +43,8 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
 
         }
         foodRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-
+        adapter = FoodRecyclerAdapter(requireContext(), ArrayList<Food>(), this)
+        foodRecyclerView.adapter = adapter
         floatActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFoodFragment_to_cartFragment)
         }
@@ -49,7 +52,8 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
     }
 
     private fun showFood(food: List<Food>) {
-        foodRecyclerView.adapter = FoodRecyclerAdapter(requireContext(), food, this)
+        adapter.food = food
+        adapter.notifyDataSetChanged()
     }
 
 
@@ -59,7 +63,6 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
                 is Success -> {
                     state.food.invoke()?.let {
                         showFood(it)
-                        showCarouselView(it)
                     }
                 }
                 is Loading -> {
@@ -73,6 +76,23 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
                 }
             }
 
+            when(state.promotion){
+                is Success -> {
+                    state.promotion.invoke()?.let {
+                        showCarouselView(it)
+                    }
+                }
+                is Loading -> {
+
+                }
+                is Fail -> {
+
+                }
+                else ->{
+
+                }
+            }
+
             showCartCount(state.cartsFood.size)
         }
     }
@@ -81,7 +101,7 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
         cartCountTv.text = size.toString()
     }
 
-    private fun showCarouselView(food: List<Food>) {
+    private fun showCarouselView(food: List<Promotion>) {
         val imageListener: ImageListener =
             ImageListener { position, imageView ->
                 imageView.load(food[position].image)

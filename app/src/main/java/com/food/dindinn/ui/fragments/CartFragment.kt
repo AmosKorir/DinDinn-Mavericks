@@ -3,8 +3,10 @@ package com.food.dindinn.ui.fragments
 import CartRecyclerAdapter
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.mvrx.MavericksView
@@ -31,7 +33,10 @@ class CartFragment : Fragment(R.layout.cart_fragment_layout), MavericksView,
             cartRecyclerView = findViewById(R.id.cartRecyclerView)
             cartRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             totalTv = findViewById(R.id.totalPriceTv)
-
+            val backImage = findViewById<ImageView>(R.id.backImage)
+            backImage.setOnClickListener {
+                findNavController().popBackStack()
+            }
         }
     }
 
@@ -43,7 +48,7 @@ class CartFragment : Fragment(R.layout.cart_fragment_layout), MavericksView,
     }
 
     private fun showTotalPrice(cartTotalPrice: Double) {
-        totalTv.text="$cartTotalPrice USD"
+        totalTv.text = "$cartTotalPrice USD"
     }
 
     private fun showFoodInCart(cartsFood: List<Food>) {

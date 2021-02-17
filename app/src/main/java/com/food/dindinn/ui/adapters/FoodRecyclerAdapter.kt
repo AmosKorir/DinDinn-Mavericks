@@ -16,7 +16,7 @@ import com.food.domain.datamodels.Food
 
 class FoodRecyclerAdapter(
     private val context: Context,
-    private val food: List<Food>,
+    var food: List<Food>,
     private val foodSelectionInterface: FoodSelectionInterface
 ) :
     RecyclerView.Adapter<FoodRecyclerAdapter.FoodRecyclerAdapterViewHolder>() {
@@ -72,7 +72,7 @@ class FoodRecyclerAdapter(
         val transition = view.background as TransitionDrawable
         transition.startTransition(1000)
         transition.reverseTransition(2000)
-        val countDownTimer = object : CountDownTimer(1000, 1000) {
+        val countDownTimer = object : CountDownTimer(2000, 1000) {
             override fun onTick(p0: Long) {
             }
             override fun onFinish() {
