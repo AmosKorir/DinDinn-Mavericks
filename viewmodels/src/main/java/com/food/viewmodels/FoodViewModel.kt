@@ -1,15 +1,16 @@
 package com.food.viewmodels
 
 import com.airbnb.mvrx.BaseMvRxViewModel
-import com.food.data.repositories.FoodApiRepository
+import com.food.data.api.DataSource
 import com.food.domain.datamodels.Food
 import com.food.viewmodels.modelstate.MainFoodState
 import io.reactivex.Single
 
-class FoodViewModel(private val mainFoodState: MainFoodState) :
-    BaseMvRxViewModel<MainFoodState>(mainFoodState) {
+class FoodViewModel(
+    private val mainFoodState: MainFoodState,
+) : BaseMvRxViewModel<MainFoodState>(mainFoodState) {
 
-    private val foodRepository = FoodApiRepository()
+    private val foodRepository = DataSource.repository
 
     fun getFood() {
         foodRepository.getFood().execute {
@@ -26,9 +27,7 @@ class FoodViewModel(private val mainFoodState: MainFoodState) :
                         add(food)
                     })
                 }
-
         }
-
     }
 
     fun removeFoodFromCart(food: Food) {

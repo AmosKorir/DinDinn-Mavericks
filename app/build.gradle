@@ -18,12 +18,9 @@ android {
     }
 
     buildTypes {
-        debug {
-            buildConfigField('String', 'BASE_URL', '"https://94dcf07f-4429-4854-800a-ae4b0e832ff1.mock.pstmn.io"')
-        }
+
 
         release {
-            buildConfigField('String', 'BASE_URL', '"https://94dcf07f-4429-4854-800a-ae4b0e832ff1.mock.pstmn.io"')
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }

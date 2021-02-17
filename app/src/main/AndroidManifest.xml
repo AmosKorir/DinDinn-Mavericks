@@ -12,7 +12,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DInDinn">
-        <activity android:name=".ui.activitities.CartActivity"></activity>
         <activity android:name=".ui.activitities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

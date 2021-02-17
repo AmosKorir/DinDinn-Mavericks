@@ -18,9 +18,12 @@ android {
     }
 
     buildTypes {
-
+        debug {
+            buildConfigField('String', 'BASE_URL', '"https://94dcf07f-4429-4854-800a-ae4b0e832ff1.mock.pstmn.io"')
+        }
         release {
             minifyEnabled false
+            buildConfigField('String', 'BASE_URL', '"https://94dcf07f-4429-4854-800a-ae4b0e832ff1.mock.pstmn.io"')
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -48,6 +51,7 @@ dependencies {
     api "org.koin:koin-android:2.1.6"
     api 'org.koin:koin-androidx-viewmodel:2.1.6'
     api 'org.koin:koin-androidx-scope:2.1.6'
+
     implementation 'com.squareup.okhttp3:okhttp:4.4.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
 
