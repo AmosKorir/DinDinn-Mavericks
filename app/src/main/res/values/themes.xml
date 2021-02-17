@@ -12,10 +12,40 @@
 		<!-- Status bar color. -->
 		<item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 		<!-- Customize your theme here. -->
+
+	</style>
+
+
+
+	<style name="MyCustomTabLayout" parent="Widget.Design.TabLayout">
+		<item name="tabTextAppearance">@style/MyCustomTabText</item>
+		<item name="tabSelectedTextColor">@color/black</item>
+	</style>
+
+	<style name="MyCustomTabText" parent="TextAppearance.AppCompat.Button">
+		<item name="android:textSize">24sp</item>
+		<item name="android:textAllCaps">false</item>
+		<item name="android:textColor">#C6C6C3</item>
+		<item name="android:textStyle">bold</item>
 	</style>
 
 	<style name="ShapeAppearanceOverlay.App.CornerSize10Percent" parent="">
 		<item name="cornerSizeTopLeft">10%</item>
 		<item name="cornerSizeTopRight">10%</item>
+	</style>
+
+	<style name="ShapeAppearanceOverlay.bottom" parent="">
+		<item name="cornerSize">12dp</item>
+		<item name="cornerFamily">rounded</item>
+	</style>
+
+	<style
+		name="ThemeOverlay.Demo.BottomSheetDialog"
+		parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+		<item name="bottomSheetStyle">@style/Widget.Demo.BottomSheet</item>
+	</style>
+
+	<style name="Widget.Demo.BottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+		<item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.bottom</item>
 	</style>
 </resources>

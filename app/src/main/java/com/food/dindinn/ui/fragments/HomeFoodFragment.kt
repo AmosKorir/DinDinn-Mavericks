@@ -17,7 +17,7 @@ import com.synnapps.carouselview.CarouselView
 import com.synnapps.carouselview.ImageListener
 
 
-class HomeFoodFragment : Fragment(R.layout.food_layout_fragment), MavericksView,
+class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksView,
     FoodRecyclerAdapter.FoodSelectionInterface {
 
     private val mainFoodViewModel: FoodViewModel by activityViewModel()
@@ -83,11 +83,9 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment), MavericksView,
     }
 
     private fun showCarouselView(food: List<Food>) {
-
         val imageListener: ImageListener =
             ImageListener { position, imageView ->
                 // You can use Glide or Picasso here
-
                 imageView.setImageResource(R.drawable.placeholder)
             }
         carouselView.setImageListener(imageListener)

@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">DInDinn</string>
     <string name="value">value</string>
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="information">Information</string>
+    <string name="pizza">Pizza</string>
+    <string name="sushi">Sushi</string>
+    <string name="drinks">Drinks</string>
 </resources>
