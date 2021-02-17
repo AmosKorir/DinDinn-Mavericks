@@ -5,11 +5,11 @@ Small Implementation using AirBnB Mavericks framework.
 <table>
 <tr>
 <td>
-<img  width="200" height="400" src="https://github.com/AmosKorir/DinDinn-Mavericks/blob/master/art/1.jpg"/>
+<img  width="200" height="400" src="https://github.com/AmosKorir/DinDinn-Mavericks/blob/master/art/a.jpg"/>
 </td>
 <td>
 
-<img  width="200" height="400" src="https://github.com/AmosKorir/DinDinn-Mavericks/blob/master/art/2.jpg"/>
+<img  width="200" height="400" src="https://github.com/AmosKorir/DinDinn-Mavericks/blob/master/art/b.jpg"/>
 </td>
 </tr>
 </table>
