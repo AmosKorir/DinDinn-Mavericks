@@ -4,7 +4,6 @@ import CartRecyclerAdapter
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -48,7 +47,6 @@ class CartFragment : Fragment(R.layout.cart_fragment_layout), MavericksView,
     }
 
     private fun showFoodInCart(cartsFood: List<Food>) {
-        Toast.makeText(requireContext(), cartsFood.size.toString(), Toast.LENGTH_SHORT).show()
         cartRecyclerView.adapter = CartRecyclerAdapter(requireContext(), cartsFood, this)
     }
 

@@ -24,14 +24,8 @@ class CartRecyclerAdapter(
         parent: ViewGroup,
         viewType: Int
     ): CartRecyclerAdapterViewHolder {
-
-
         val view = LayoutInflater.from(context).inflate(R.layout.foods_item_layout, parent, false)
-
-
-        return CartRecyclerAdapterViewHolder(
-            view
-        )
+        return CartRecyclerAdapterViewHolder(view)
     }
 
     override fun getItemCount(): Int {
@@ -40,9 +34,10 @@ class CartRecyclerAdapter(
 
     override fun onBindViewHolder(holder: CartRecyclerAdapterViewHolder, position: Int) {
         val foodMeal = foods[position]
-      bind(holder.itemView,foodMeal)
+        bind(holder.itemView, foodMeal)
     }
-    private fun bind(itemView: View, food: Food){
+
+    private fun bind(itemView: View, food: Food) {
         lateinit var removeImage: ImageView
         lateinit var foodImage: ImageView
         lateinit var foodNmeTv: TextView
@@ -53,13 +48,14 @@ class CartRecyclerAdapter(
             foodNmeTv = findViewById(com.food.dindinn.R.id.foodName)
             foodPrice = findViewById(com.food.dindinn.R.id.priceTv)
         }
-        foodNmeTv.text=food.name
-        foodPrice.text="${food.price} USD"
+        foodNmeTv.text = food.name
+        foodPrice.text = "${food.price} USD"
         removeImage.setOnClickListener {
             cartInterface.removeFromCart(food)
         }
 
     }
+
     interface CartInterface {
         fun removeFromCart(food: Food)
     }
