@@ -1,3 +1,4 @@
 <resources>
-	<string name="app_name">DInDinn</string>
+    <string name="app_name">DInDinn</string>
+    <string name="value">value</string>
 </resources>

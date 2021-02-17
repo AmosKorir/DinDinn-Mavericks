@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFoodFragment">
+
+    <fragment
+        android:id="@+id/homeFoodFragment"
+        android:name="com.food.dindinn.ui.fragments.HomeFoodFragment"
+        android:label="HomeFoodFragment" >
+        <action
+            android:id="@+id/action_homeFoodFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.food.dindinn.ui.fragments.CartFragment"
+        android:label="CartFragment" />
+</navigation>

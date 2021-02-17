@@ -42,5 +42,21 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    api 'com.airbnb.android:mavericks:2.0.0'
+    api 'com.airbnb.android:mavericks-rxjava2:2.0.0'
+
+    // Koin
+    api "org.koin:koin-android:2.1.6"
+    api 'org.koin:koin-androidx-viewmodel:2.1.6'
+    api 'org.koin:koin-androidx-scope:2.1.6'
+    implementation 'com.squareup.okhttp3:okhttp:4.4.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.4.0'
+
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
+    api 'io.reactivex.rxjava2:rxandroid:2.1.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.0'
+    implementation 'com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0'
+
+    api 'androidx.room:room-runtime:2.2.6'
+    api 'androidx.room:room-rxjava2:2.2.6'
+
 }

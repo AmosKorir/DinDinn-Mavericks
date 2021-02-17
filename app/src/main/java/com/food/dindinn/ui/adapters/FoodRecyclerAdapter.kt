@@ -1,4 +1,5 @@
 package com.food.dindinn.ui.adapters
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -8,7 +9,11 @@ import com.food.dindinn.R
 import com.food.domain.datamodels.Food
 
 
-class FoodRecyclerAdapter(private val context: Context, private val food: List<Food>) :
+class FoodRecyclerAdapter(
+    private val context: Context,
+    private val food: List<Food>,
+    private val foodSelectionInterface: FoodSelectionInterface
+) :
     RecyclerView.Adapter<FoodRecyclerAdapter.FoodRecyclerAdapterViewHolder>() {
 
     class FoodRecyclerAdapterViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -29,6 +34,14 @@ class FoodRecyclerAdapter(private val context: Context, private val food: List<F
     }
 
     override fun onBindViewHolder(holder: FoodRecyclerAdapterViewHolder, position: Int) {
+        val view = holder.itemView
+        val foodMeal = food[position]
+        view.setOnClickListener {
+            foodSelectionInterface.addToCart(foodMeal)
+        }
+    }
 
+    interface FoodSelectionInterface {
+        fun addToCart(food: Food)
     }
 }

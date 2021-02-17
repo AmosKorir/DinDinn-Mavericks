@@ -1,7 +1,8 @@
 package com.food.domain.repositories
 
 import com.food.domain.datamodels.Food
+import io.reactivex.Single
 
 interface FoodRepository {
-    fun getFood():List<Food>
+    fun getFood(): Single<List<Food>>
 }
