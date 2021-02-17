@@ -1,4 +1,4 @@
-# DinDinn Mavericks(MvRx) Clean Archicture
+# DinDinn Mavericks(MvRx) Clean Architecture
 
 Small Implementation using AirBnB Mavericks framework.
 
