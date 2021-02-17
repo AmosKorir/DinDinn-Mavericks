@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.airbnb.mvrx.*
 import com.food.dindinn.R
 import com.food.dindinn.ui.adapters.FoodRecyclerAdapter
@@ -44,8 +45,6 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
         floatActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_homeFoodFragment_to_cartFragment)
         }
-
-
         mainFoodViewModel.getFood()
     }
 
@@ -85,8 +84,7 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
     private fun showCarouselView(food: List<Food>) {
         val imageListener: ImageListener =
             ImageListener { position, imageView ->
-                // You can use Glide or Picasso here
-                imageView.setImageResource(R.drawable.placeholder)
+                imageView.load(food[position].image)
             }
         carouselView.setImageListener(imageListener)
         carouselView.pageCount = food.size

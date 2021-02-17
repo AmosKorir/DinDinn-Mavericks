@@ -7,4 +7,7 @@
     <string name="pizza">Pizza</string>
     <string name="sushi">Sushi</string>
     <string name="drinks">Drinks</string>
+    <string name="delivery">delivery</string>
+    <string name="kazarov">Kazarov</string>
+    <string name="pricing" > %s USD</string>
 </resources>

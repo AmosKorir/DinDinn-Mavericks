@@ -26,7 +26,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/imageView"
+                android:id="@+id/foodImageItemTv"
                 android:layout_width="wrap_content"
                 android:layout_height="200dp"
                 android:scaleType="centerCrop"
@@ -44,27 +44,26 @@
                 android:background="@drawable/button_background"
                 android:clickable="true"
                 android:gravity="center"
-                android:minWidth="100dp"
-                android:minHeight="40dp"
-                android:text="Button"
+                android:minWidth="@dimen/dimen_100"
+                android:minHeight="@dimen/dimen_40"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/foodImageItemTv"
+                android:focusable="true" />
 
             <TextView
                 android:id="@+id/foodNameTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="12dp"
-
+                android:layout_marginStart="@dimen/dimen_16"
+                android:layout_marginLeft="@dimen/dimen_16"
+                android:layout_marginTop="@dimen/dimen_12"
                 android:text="TextView"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+                app:layout_constraintTop_toBottomOf="@+id/foodImageItemTv" />
 
             <TextView
                 android:id="@+id/descriptionTv"

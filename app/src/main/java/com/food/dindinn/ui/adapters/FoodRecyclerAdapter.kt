@@ -4,7 +4,10 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.food.dindinn.R
 import com.food.domain.datamodels.Food
 
@@ -36,7 +39,27 @@ class FoodRecyclerAdapter(
     override fun onBindViewHolder(holder: FoodRecyclerAdapterViewHolder, position: Int) {
         val view = holder.itemView
         val foodMeal = food[position]
-        view.setOnClickListener {
+        bind(view, foodMeal)
+    }
+
+    private fun bind(view: View, foodMeal: Food) {
+        lateinit var foodImage: ImageView
+        lateinit var foodName: TextView
+        lateinit var foodDescriptionTv: TextView
+        lateinit var foodPrice: TextView
+
+        with(view) {
+            foodImage = findViewById(R.id.foodImageItemTv)
+            foodName = findViewById(R.id.foodNameTv)
+            foodDescriptionTv = findViewById(R.id.descriptionTv)
+            foodPrice = findViewById(R.id.addToCartButton)
+        }
+
+        foodImage.load(foodMeal.image)
+        foodName.text = foodMeal.name
+        foodPrice.text = context.getString(R.string.pricing, foodMeal.price.toString())
+        foodDescriptionTv.text = foodMeal.description
+        foodPrice.setOnClickListener {
             foodSelectionInterface.addToCart(foodMeal)
         }
     }

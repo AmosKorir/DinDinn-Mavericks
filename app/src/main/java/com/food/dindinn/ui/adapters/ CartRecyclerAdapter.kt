@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.food.dindinn.R
 import com.food.domain.datamodels.Food
 
@@ -49,10 +50,11 @@ class CartRecyclerAdapter(
             foodPrice = findViewById(com.food.dindinn.R.id.priceTv)
         }
         foodNmeTv.text = food.name
-        foodPrice.text = "${food.price} USD"
+        foodPrice.text = context.getString(R.string.pricing, food.price.toString())
         removeImage.setOnClickListener {
             cartInterface.removeFromCart(food)
         }
+        foodImage.load(food.image)
 
     }
 
