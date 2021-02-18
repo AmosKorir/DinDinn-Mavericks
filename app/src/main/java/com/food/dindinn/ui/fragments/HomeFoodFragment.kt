@@ -2,7 +2,9 @@ package com.food.dindinn.ui.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +30,8 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
     private lateinit var cartCountTv: TextView
     private lateinit var carouselView: CarouselView
     private lateinit var adapter: FoodRecyclerAdapter
+    private lateinit var promotionProgressBar:ProgressBar
+    private lateinit var foodProgressBar: ProgressBar
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,6 +44,8 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
             floatActionButton = findViewById(R.id.floatingActionButton)
             foodRecyclerView = findViewById(R.id.foodRecyclerView)
             carouselView = findViewById(R.id.carouselView)
+            foodProgressBar=findViewById(R.id.foodProgressBar)
+            promotionProgressBar=findViewById(R.id.promotionProgressBar)
 
         }
         foodRecyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -64,12 +70,14 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
                     state.food.invoke()?.let {
                         showFood(it)
                     }
+                    foodProgressBar.visibility=View.INVISIBLE
                 }
                 is Loading -> {
-
+                    foodProgressBar.visibility=View.VISIBLE
                 }
                 is Fail -> {
-
+                    errorMessage()
+                    foodProgressBar.visibility=View.INVISIBLE
                 }
                 else -> {
 
@@ -80,13 +88,15 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
                 is Success -> {
                     state.promotion.invoke()?.let {
                         showCarouselView(it)
+                        promotionProgressBar.visibility=View.INVISIBLE
                     }
                 }
                 is Loading -> {
-
+                    promotionProgressBar.visibility=View.VISIBLE
                 }
                 is Fail -> {
-
+                    errorMessage()
+                 promotionProgressBar.visibility=View.INVISIBLE
                 }
                 else ->{
 
@@ -95,6 +105,10 @@ class HomeFoodFragment : Fragment(R.layout.food_layout_fragment_nex), MavericksV
 
             showCartCount(state.cartsFood.size)
         }
+    }
+
+    private fun errorMessage() {
+        Toast.makeText(requireContext(),"Error encountered",Toast.LENGTH_SHORT).show()
     }
 
     private fun showCartCount(size: Int) {
